@@ -43,20 +43,67 @@ Page {
         anchors.fill: parent
 
         Rectangle {
+            id: exitButton
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width
             height: 200
+            color: "red"
 
             Text {
                 anchors.centerIn: parent
-                text: "Hallo World"
+                text: "** Exit **"
+                color: "black"
+                font.bold: true
             }
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
                     Qt.quit();
+                }
+            }
+        }
+
+        Rectangle {
+            id: blueButton
+            anchors.top: exitButton.bottom
+            width: parent.width
+            height: 150
+            color: "blue"
+
+            Text {
+                anchors.centerIn: parent
+                text: "THE BLUE BUTTON"
+                font.italic: true
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log( "the blue Button got clicked!")
+                }
+            }
+        }
+
+        Rectangle {
+            anchors.top: blueButton.bottom
+            anchors.bottomMargin: 10
+            width: parent.width
+            height: 250
+            color: "green"
+
+            Text {
+                anchors.centerIn: parent
+                text: "The green Button"
+                font.letterSpacing: 6
+                font.pixelSize: 20
+            }
+
+            MouseArea {
+                anchors.centerIn: parent
+                onClicked: {
+                    console.log( "The green Button got cliecked")
                 }
             }
         }
