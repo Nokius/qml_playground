@@ -38,80 +38,78 @@ Page {
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
 
-    Item {
+    // To enable PullDownMenu, place our content in a SilicaFlickable
+    SilicaFlickable {
+        anchors.fill: parent
 
 
-        width: parent.width
-        height: parent.height
-
-
-        Column {
-
+        Rectangle {
+            id: exitButton
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            width: parent.width
+            height: 200
+            color: "red"
 
-            spacing: 60
-
-            Rectangle {
-                id: exitButton
-                width: parent.width
-                height: 200
-                color: "red"
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "** Exit **"
-                    color: "black"
-                    font.bold: true
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        Qt.quit();
-                    }
-                }
+            Text {
+                anchors.centerIn: parent
+                text: "** Exit **"
+                color: "black"
+                font.bold: true
             }
 
-            Rectangle {
-                id: blueButton
-                width: parent.width
-                height: 150
-                color: "blue"
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "THE BLUE BUTTON"
-                    font.italic: true
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        console.log( "the blue Button got clicked!")
-                    }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    Qt.quit();
                 }
             }
+        }
 
-            Rectangle {
-                width: parent.width
-                height: 250
-                color: "green"
+        Rectangle {
+            id: blueButton
+            anchors.top: exitButton.bottom
+            width: parent.width
+            height: 150
+            color: "blue"
 
-                Text {
-                    anchors.centerIn: parent
-                    text: "The green Button"
-                    font.letterSpacing: 6
-                    font.pixelSize: 20
+            Text {
+                anchors.centerIn: parent
+                text: "THE BLUE BUTTON"
+                font.italic: true
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+                    console.log( "the blue Button got clicked!")
                 }
+            }
+        }
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        console.log( "The green Button got cliecked")
-                    }
+        Rectangle {
+            anchors.top: blueButton.bottom
+            anchors.topMargin: 10
+            width: parent.width
+            height: 250
+            color: "green"
+
+            Text {
+                anchors.centerIn: parent
+                text: "The green Button"
+                font.letterSpacing: 6
+                font.pixelSize: 20
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("ThirdPage.qml"))
+                    console.log( "the green Button got clicked!")
                 }
             }
         }
     }
 }
+
