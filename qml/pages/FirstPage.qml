@@ -88,7 +88,7 @@ Page {
 
         Rectangle {
             anchors.top: blueButton.bottom
-            anchors.bottomMargin: 10
+            anchors.topMargin: 10
             width: parent.width
             height: 250
             color: "green"
@@ -101,7 +101,7 @@ Page {
             }
 
             MouseArea {
-                anchors.centerIn: parent
+                anchors.fill: parent
                 onClicked: {
                     console.log( "The green Button got cliecked")
                 }
